@@ -1,0 +1,286 @@
+package areaperimeterof2dshapes;
+
+
+public class AreaPerimeterof2DShapes {
+    
+    double Length ; 
+    double Height ; 
+    double Radius ;
+    double PentagonLength ; 
+    static double UserInput ; 
+    
+     AreaPerimeterof2DShapes (){
+         Length = 0;
+         Height = 0;
+         Radius = 0;
+         PentagonLength = 0; 
+         UserInput  = 0; 
+     }
+    
+      
+       
+  
+    public  static void  main(String[] args) {
+        
+       System.out.println ("Enter 1, 2, or 3  to execute the program. ");
+       System.out.println ("To end the program, type a number that is not : 1,2,3 or 0 "); 
+       UserInputScreen q0 = new UserInputScreen ();
+       q0.UserInput ();
+       if (UserInput ==1){
+      
+       Rectangle q1 = new Rectangle();
+       q1.UserInputLength();
+       q1.UserInputHeight();
+       q1.RectangleArea();
+       q1.RectanglePerimeter();
+       }
+       else if (UserInput==2){
+       Circle q2 = new Circle ();
+       q2.UserInputRadius ();
+       q2.CircleArea (); 
+       q2.CircleCircumference();
+       }
+       else if (UserInput==3){
+       Pentagon q3 = new Pentagon ();  
+       q3.UserInputPentagonLength();
+       q3.PentagonPerimeter ();
+       q3.PentagonArea ();
+    }
+    }
+    
+}
+package areaperimeterof2dshapes;
+
+import java.util.InputMismatchException;
+import java.util.Scanner ; 
+
+public class Rectangle extends AreaPerimeterof2DShapes{
+    
+        Rectangle (){
+            
+        }
+    
+   
+    
+      private double getLength (String Instruction){
+        
+        Scanner input = new Scanner (System.in); 
+         
+         while (true){
+            try {
+                Length = input.nextDouble();
+                break ; 
+            }
+            catch (InputMismatchException err){
+                input.next();
+                System.out.println ("Not a number, please enter a number : " );
+            }
+        }
+        return Length ; 
+    }
+    
+    public void UserInputLength(){
+         
+        System.out.println ("The value of your length must not equal to zero"); 
+        System.out.print ("Please enter a length  : ");
+        while (true){
+            this.Length = getLength("Length"); 
+            if (this.Length!=0)break ; 
+            else System.out.print ("\"Length\" must not equal 0, please enter a number : ");
+        }
+         
+    }
+    
+    public double getHeight(String Instruction){
+        
+        Scanner input = new Scanner (System.in); 
+        
+        while (true){
+            try {
+                Height= input.nextDouble();
+                break ; 
+            }
+            catch (InputMismatchException err){
+                input.next();
+                System.out.println ("Not a number, please enter a number : " );
+            }
+        }
+        return  Height; 
+    }       
+    
+    
+    public void UserInputHeight(){
+         
+        System.out.println ("The value of your Height must not equal to zero"); 
+        System.out.print ("Please enter a Height  : ");
+        while (true){
+            this.Height = getHeight("Height"); 
+            if (this.Height!=0)break ; 
+            else System.out.print ("\"Height\" must not equal 0, please enter a number : ");
+        }
+         
+    }
+     public void RectangleArea (){
+        double Area =  Length * Height;
+        System.out.println ("The area is : "+ Area );
+    }
+     
+     public void RectanglePerimeter (){
+         double Perimeter = 2 *(Length + Height);
+         System.out.println ("The perimeter is : "+ Perimeter);
+     }
+    
+    }
+    
+
+package areaperimeterof2dshapes;
+
+import java.util.Scanner ; 
+import java.util.InputMismatchException;
+
+public class Circle extends AreaPerimeterof2DShapes{
+    
+    Circle (){
+    }
+    
+    private double getRadius (String Instruction){
+        
+        Scanner input = new Scanner (System.in); 
+         
+         while (true){
+            try {
+                Radius = input.nextDouble();
+                break ; 
+            }
+            catch (InputMismatchException err){
+                input.next();
+                System.out.println ("Not a number, please enter a number : " );
+            }
+        }
+        return Radius ; 
+    }
+    
+    public void UserInputRadius (){
+        System.out.println ("The value of your Radius must not equal to zero"); 
+        System.out.print ("Please enter a Radius  : ");
+        while (true){
+            this.Radius = getRadius("Radius"); 
+            if (this.Radius!=0)break ; 
+            else System.out.print ("\"Radius\" must not equal 0, please enter a number : ");
+        }
+    }
+    
+    public void CircleArea (){
+        double Area =  (Math.PI)*(Radius*Radius);
+        System.out.println ("The area is : "+ Area );
+    }
+    
+    public void CircleCircumference (){
+        double Circumference  = (2)*(Math.PI)*(Radius);
+        System.out.println ("The Circumference is : "+ Circumference );
+    }
+    
+}
+
+
+
+package areaperimeterof2dshapes;
+
+import java.util.Scanner ; 
+import java.util.InputMismatchException;
+
+
+
+public class Pentagon extends AreaPerimeterof2DShapes{
+    
+    Pentagon (){
+        
+    }
+    
+    private double getPentagonLength (String Instruction){
+        
+        Scanner input = new Scanner (System.in); 
+         
+         while (true){
+            try {
+                PentagonLength = input.nextDouble();
+                break ; 
+            }
+            catch (InputMismatchException err){
+                input.next();
+                System.out.println ("Not a number, please enter a number : " );
+            }
+        }
+        return PentagonLength ; 
+    }
+    
+     public void UserInputPentagonLength(){
+         
+        System.out.println ("The value of your length must not equal to zero"); 
+        System.out.print ("Please enter a length  : ");
+        while (true){
+            this.PentagonLength = getPentagonLength("PentagonLength"); 
+            if (this.PentagonLength!=0)break ; 
+            else System.out.print ("\"PentagonLength\" must not equal 0, please enter a number : ");
+        }
+         
+    }
+     
+    public void PentagonPerimeter (){
+        double Perimeter =  5 * PentagonLength ; 
+        System.out.println ("The perimeter is : " + Perimeter);
+    }
+    
+    public void PentagonArea (){
+        double SubArea = (5*(2*Math.sqrt(5) +5));
+        double AnotherArea = (Math.sqrt(SubArea)*0.25);
+        double FinalArea = (AnotherArea * PentagonLength * PentagonLength);
+        System.out.println ("The area is : " + FinalArea) ; 
+    }
+}
+
+
+package areaperimeterof2dshapes;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+ class UserInputScreen extends AreaPerimeterof2DShapes{
+     
+     UserInputScreen (){
+     }
+    
+      private double getUserInput (String Instruction){
+        
+        Scanner input = new Scanner (System.in); 
+         
+         while (true){
+            try {
+                UserInput = input.nextDouble();
+                break ; 
+            }
+            catch (InputMismatchException err){
+                input.next();
+                System.out.println ("Not a number, please enter a number : " );
+            }
+        }
+        return UserInput ; 
+    }
+    
+    public void UserInput (){
+        System.out.println ("Enter a number : "); 
+        while (true){
+            this.UserInput = getUserInput("UserInput"); 
+            if (this.UserInput!=0)break ; 
+            else System.out.print ("\"UserInput\" must not equal 0, please enter a number : ");
+        }
+    }
+    
+}
+
+
+
+
+
+
+
